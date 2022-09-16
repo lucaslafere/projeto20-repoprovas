@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "jest --no-cache",
+    "test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test jest --no-cache",
     "dev": "nodemon src/server.ts"
   },
   "keywords": [],
@@ -29,6 +29,7 @@
     "@types/node": "^18.7.18",
     "@types/pg": "^8.6.5",
     "@types/supertest": "^2.0.12",
+    "dotenv-cli": "^6.0.0",
     "jest": "^29.0.3",
     "nodemon": "^2.0.20",
     "prisma": "^4.3.1",
