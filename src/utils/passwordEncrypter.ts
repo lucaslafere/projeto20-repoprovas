@@ -3,10 +3,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const hash: number = Number(process.env.PASSWORD_HASH) || 12;
+const salt: number = Number(process.env.PASSWORD_SALT) || 12;
 
-export function hashPassword(password: string){
-    return hashSync(password, hash);
+export function hashedPassword(password: string){
+    return hashSync(password, salt);
 }
 
 export function comparePassword(password: string, encryptedPassword: string): boolean {

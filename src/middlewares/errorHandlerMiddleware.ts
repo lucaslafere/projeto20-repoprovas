@@ -19,5 +19,11 @@ export default function errorHandlerMiddleware  (err: iError, req: Request, res:
     if (err.type === 'Generic'){
         return res.status(400).send(err.message);
     }
+    if (err.type === 'Unauthorized'){
+        return res.status(401).send(err.message);
+    }
+    if (err.type === 'wrong-body-format'){
+        return res.status(400).send(err.message);
+    }
     return res.status(500).send("Untracked error");
 }
