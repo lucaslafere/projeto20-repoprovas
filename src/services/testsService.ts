@@ -47,14 +47,25 @@ export async function findAllOrderByTerms() {
                         tests: [],
                     };
                     const testsPeriod = testsDiscipline.filter(el => categories.some(category => category.id === el.categoryId));
-                }
-                )
 
+                    for (let test of testsPeriod){
+                        const testData = {
+                            name: test.name,
+                            pdfUrl: test.pdfUrl,
+                            teacher: "",
+                        };
+                        const teacherId = teacherDiscipline.filter(teacherDiscipline => teacherDiscipline.id === test.teacherDisciplineId)
+                        const teacher = findAllTeachers.filter(teacher => teacher.id === teacherId[0].teacherId);
 
+                        testData.teacher = teacher[0].name;
+                        categoryData.tests.push(testData)
+                    }
+                    return categoryData;
+                });
+                termData.disciplinesData.push(disciplineData)
             }
-
         }
+        formattedTests.push(termData)
         }
-        
-
+        return formattedTests
 }
