@@ -9,3 +9,11 @@ export async function findAll () {
     const result = await prisma.categories.findMany();
     return result;
 }
+export async function findAllNames () {
+    const result = await prisma.categories.findMany({
+        select: {
+            name: true
+        }
+    })
+    return result
+}

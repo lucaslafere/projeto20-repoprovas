@@ -18,7 +18,7 @@ export async function findAll () {
     return result;
 }
 
-export async function findByTerms () {
+export async function findByTerms (term: number, discipline: string, category: string) {
 }
 
 export async function findByTeachers () {
