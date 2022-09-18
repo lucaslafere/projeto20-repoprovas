@@ -2,6 +2,9 @@ import * as testsRepository from '../repositories/testsRepository';
 import { TestData } from '../types/testsType';
 import * as categoriesRepository from '../repositories/categoriesRepository'
 import * as teacherDisciplinesRepository from '../repositories/teacherDisciplinesRepository'
+import * as termsRepository from '../repositories/termsRepository';
+import * as disciplinesRepository from '../repositories/disciplinesRepository'
+import * as teachersRepository from '../repositories/teachersRepository'
 
 export async function insert(
     testDetails: TestData
@@ -15,5 +18,8 @@ export async function insert(
 }
 
 export async function findAllOrderByTerms() {
-        
+        const findAllTerms = await termsRepository.findAll();
+        const findAllDisciplines = await disciplinesRepository.findAll();
+        const findAllTeachers = await teachersRepository.findAll();
+
 }
