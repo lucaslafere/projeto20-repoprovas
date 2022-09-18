@@ -18,9 +18,69 @@ export async function findAll () {
     return result;
 }
 
-export async function findByTerms (term: number, discipline: string, category: string) {
+export async function findByTerms () {
+    const result = await prisma.terms.findMany({
+        where: {},
+        distinct: ["number"],
+        select: {
+            number: true,
+            disciplines: {
+                distinct: ["name"],
+                select: {
+                    name: true,
+                    teachersDisciplines: {
+                        select: {
+                            teacher: {select: {name: true}},
+                            tests: {
+                                select: {
+                                    name: true,
+                                    pdfUrl: true,
+                                    category: {
+                                        select: {
+                                            name: true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+    return result
 }
 
 export async function findByTeachers () {
+    const result = await prisma.terms.findMany({
+        where: {},
+        distinct: ["number"],
+        select: {
+            number: true,
+            disciplines: {
+                distinct: ["name"],
+                select: {
+                    name: true,
+                    teachersDisciplines: {
+                        select: {
+                            teacher: {select: {name: true}},
+                            tests: {
+                                select: {
+                                    name: true,
+                                    pdfUrl: true,
+                                    category: {
+                                        select: {
+                                            name: true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+    return result
 
 }
