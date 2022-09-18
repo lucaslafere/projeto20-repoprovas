@@ -1,4 +1,5 @@
 import { prisma } from "../database";
+import connection from '../postgresdatabase'
 import { TestData } from '../types/testsType';
 
 export async function insert (testDetails: TestData) {
@@ -18,7 +19,6 @@ export async function findAll () {
 }
 
 export async function findByTerms () {
-
 }
 
 export async function findByTeachers () {
