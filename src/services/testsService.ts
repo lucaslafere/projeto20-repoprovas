@@ -21,5 +21,40 @@ export async function findAllOrderByTerms() {
         const findAllTerms = await termsRepository.findAll();
         const findAllDisciplines = await disciplinesRepository.findAll();
         const findAllTeachers = await teachersRepository.findAll();
+        const findAllTeachersDisciplines = await teacherDisciplinesRepository.findAll();
+        const findAllTests = await testsRepository.findAll();
+        const findAllCategories = await categoriesRepository.findAll();
+
+        const formattedTests = [];
+
+        for (let term of findAllTerms){
+            const termData = {
+                period: term.number,
+                disciplinesData: [],
+            };
+            for (let discipline of findAllDisciplines){
+                if (discipline.termId === term.id ){
+                const disciplineData: any = {
+                    disciplineName: discipline.name,
+                }
+                const teacherDiscipline = findAllTeachersDisciplines.filter(teacherDiscipline => teacherDiscipline.disciplineId === discipline.id);
+                const testsDiscipline = findAllTests.filter(el => teacherDiscipline.some(teacherDiscipline => teacherDiscipline.id === el.teacherDisciplineId))
+                const categories = findAllCategories.filter(category => testsDiscipline.some(tests => tests.categoryId === category.id));
+
+                disciplineData.categories = categories.map(el => {
+                    const categoryData = {
+                        categoryName: el.name,
+                        tests: [],
+                    };
+                    const testsPeriod = testsDiscipline.filter(el => categories.some(category => category.id === el.categoryId));
+                }
+                )
+
+
+            }
+
+        }
+        }
+        
 
 }
