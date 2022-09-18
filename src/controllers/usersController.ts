@@ -8,7 +8,7 @@ export async function createUser (req: Request, res: Response){
     const { error } = signUpSchema.validate(userData);
     if (error) throw {type: 'wrong-body-format', message: error.message};
     await usersService.createUser(userData);
-    return res.status(200).send("Created");
+    return res.status(201).send("Created");
 }
 
 export async function login (req: Request, res: Response){

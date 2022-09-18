@@ -23,7 +23,7 @@ export default function errorHandlerMiddleware  (err: iError, req: Request, res:
         return res.status(401).send(err.message);
     }
     if (err.type === 'wrong-body-format'){
-        return res.status(400).send(err.message);
+        return res.status(422).send(err.message);
     }
     return res.status(500).send("Untracked error");
 }

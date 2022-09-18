@@ -6,8 +6,11 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test jest --no-cache",
+    "test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test npx prisma db seed && dotenv -e .env.test jest --no-cache -i",
     "dev": "nodemon src/server.ts"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
