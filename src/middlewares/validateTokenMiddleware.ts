@@ -8,6 +8,5 @@ export default async function validateToken(req: Request, res: Response, next: N
     const userData: any = manipulateToken.decryptToken(token);
     const findExistingUser = await usersRepository.findByEmail(userData.email);
     if (!findExistingUser) throw {type: 'NotFound', message: "user not found"};
-    res.locals.userId = userData.id;
     next();
 }
