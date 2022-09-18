@@ -16,3 +16,11 @@ export async function findAll () {
     const result = await prisma.tests.findMany();
     return result;
 }
+
+export async function findByTerms () {
+
+}
+
+export async function findByTeachers () {
+
+}
