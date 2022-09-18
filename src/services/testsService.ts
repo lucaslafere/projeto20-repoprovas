@@ -13,3 +13,7 @@ export async function insert(
     await testsRepository.insert(testDetails);
 
 }
+
+export async function findAllOrderByTerms() {
+        
+}
