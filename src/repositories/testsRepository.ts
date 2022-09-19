@@ -84,3 +84,13 @@ export async function findByTeachers () {
     return result
 
 }
+
+export async function newFindAllByTerms () {
+
+    const result = await prisma.tests.findMany({
+        select: {
+            
+        }
+    })
+    return result
+}
